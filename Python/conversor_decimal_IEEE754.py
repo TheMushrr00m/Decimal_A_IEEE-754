@@ -1,59 +1,52 @@
-#! -*- coding: utf-8 -*-
+#! /usr/bin/ python2
+# -*- coding: utf-8 -*-
 
 ##############################################
 #	Conversor de números a notación IEEE 754 #
 ##############################################
+import sys, os
+from argparse import ArgumentParser
 
-NEGATIVO = 1
-POSITIVO = 0
 num_ingresado = 0
-num_ingresado_binario = 0
-opt_salir = "NO"
+num_binario = ''
+parser = ArgumentParser(description='Convierte el número ingresado a la notación IEEE 754.', 
+	epilog='<TheMushrr00m | La Espora Del Hongo - 2015>', prog=)
+signo = ''
 
-def header():
-	print """
-	#################################################
-	#  Conversor de números a notación IEEE 754     #
-	#                                               #
-	#  Creado por: Gabriel Cueto Báez               #
-	#  Blog: http://www.laesporadelhongo.com/       #
-	#  GitHub: http://www.github.com/TheMushrr00m/  #
-	#  El: 11-Septiembre-2015                       #
-	#  Métodos Númericos                            #
-	#################################################	
-	> Ingresa el número en notación decimal, el cúal, deseas convertir
-	  a la notación IEEE-754.\n
-	"""
+def add_Args():
+	""" Añade los argumentos que se pueden pasar a la llamada del programa en la linea de comandos. """
+	parser.add_argument('-u', '--url', dest='url', help='URL desde donde comenzar a indexar.', required=True)
+	parser.add_argument('-l', '--limite', default=10, dest='limit', help='Limite de URLs a indexar (10 por defecto).', type=int)
 
-def opt_exit():
-	print '¿Desea seguir utilizando el programa?'
-	try:
-		opt_salir = raw_input('Ingresa SI o NO: ')
-		opt_salir = opt_salir.upper()
-		if opt_salir == "SI" or opt_salir == "S":
-			return False
-		elif opt_salir == "NO" or opt_salir == "N":
-			print 'Adiós :('
-			return True
-	except Exception, e:
-		print "Ingresa una Opción Valida"
+def banner():
+	print """\033[1;36m
+#################################################
+#  Conversor de números a notación IEEE 754     #
+#  Creado por: Gabriel Cueto Báez               #
+#  Ingeniería en Software | Métodos Númericos   #
+#################################################	
+	
+\033[1;32m+ -- -- +=[ Autor: < TheMushrr00m > | Blog: http://laesporadelhongo.com/]
+\033[1;33m"""
 
-def primer_uso():
-	pedir_num()
+# Inicia el bucle principal del programa.
+if len(sys.argv) == 2:
+	# Lee el número pasado como argumento.
+	num_ingresado = sys.argv[1]
+	convertir_a_binario(num_ingresado)
+elif len(sys.argv) <= 2:
+	print banner()
+else:
+	print banner()
 
-def pedir_num():
-	num_ingresado = input('Ingresa el número a Convertir: ')
-	if num_ingresado > 0:
-		signo = POSITIVO
-	else: 
-		signo = NEGATIVO
-
-def convertir_a_binario():
-	num_ingresado
-
-header()
-pedir_num()
-# Initiating the principal bucle of the 'script'.
-while not opt_exit():
-	pedir_num()
+def convertir_a_binario(numero):
+	bin_Num = ""
+	i = 0
+	iMask = 1 < 7
+	for i in range(1..8):
+		if(numero != 0):
+			bin_Num += "1"
+		else:
+			bin_Num += "0"
+	pass
 

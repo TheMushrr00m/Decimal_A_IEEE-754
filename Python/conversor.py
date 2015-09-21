@@ -7,18 +7,13 @@
 import sys, os
 from argparse import ArgumentParser
 
+args = ''
 num_ingresado = 0
 num_binario = ''
-parser = ArgumentParser(description='Convierte el número ingresado a la notación IEEE 754.', 
-	epilog='<TheMushrr00m | La Espora Del Hongo - 2015>', prog=)
 signo = ''
 
-def add_Args():
-	""" Añade los argumentos que se pueden pasar a la llamada del programa en la linea de comandos. """
-	parser.add_argument('-u', '--url', dest='url', help='URL desde donde comenzar a indexar.', required=True)
-	parser.add_argument('-l', '--limite', default=10, dest='limit', help='Limite de URLs a indexar (10 por defecto).', type=int)
-
 def banner():
+	os.system('clear')
 	print """\033[1;36m
 #################################################
 #  Conversor de números a notación IEEE 754     #
@@ -29,24 +24,32 @@ def banner():
 \033[1;32m+ -- -- +=[ Autor: < TheMushrr00m > | Blog: http://laesporadelhongo.com/]
 \033[1;33m"""
 
-# Inicia el bucle principal del programa.
-if len(sys.argv) == 2:
-	# Lee el número pasado como argumento.
-	num_ingresado = sys.argv[1]
-	convertir_a_binario(num_ingresado)
-elif len(sys.argv) <= 2:
-	print banner()
-else:
-	print banner()
-
-def convertir_a_binario(numero):
-	bin_Num = ""
-	i = 0
-	iMask = 1 < 7
-	for i in range(1..8):
-		if(numero != 0):
-			bin_Num += "1"
-		else:
-			bin_Num += "0"
+def dec_2_bin(_numero):
+	""" Convierte un número decimal a su representación binaria. """
+	print "\033[1;36m[*] Comienza la conversión..."
 	pass
 
+def float_2_bin(_numero):
+	""" Convierte un número con punto decimal a su representación binaria. """
+	print "\033[1;36m[*] Comienza la conversión..."
+	pass
+
+def leer_numero():
+	global num_ingresado
+	while True:
+		try:
+			num_ingresado = input("\033[1;33m[*] Ingresa el número a convertir: ")
+			return num_ingresado
+		except:
+			print "\n\033[1;31m[!] Ingresa un valor númerico...\n"
+
+def main():
+	leer_numero()
+	if type(num_ingresado) is int:
+		dec_2_bin(num_ingresado)
+	else:
+		float_2_bin(num_ingresado)
+
+if __name__ == '__main__':
+	banner()
+	main()
